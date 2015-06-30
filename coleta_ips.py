@@ -1,31 +1,34 @@
-#Ler o arquivo
+#Ler o ler_arquiv
 def ler_arquivo(arquivo):
+	"""
+		Funcao que carrega o arquivo
+	"""
     arquivo = open(arquivo, 'r')
     return arquivo
 
-
-
-
-
-
 def valida_ip(ip_testado):
+	""""
+		Funcao que valida se um IP e ou nao valido
+	"""
 	ip = ip_testado.split('.')
 	k=0
 	if int(ip[0])>0 and int(ip[0])<256:
 		k+=1
-	if int(ip[1])>=0 and int(ip[1])<256:
-		k+=1
-	if int(ip[2])>=0 and int(ip[2])<256:
-		k+=1
-	if int(ip[3])>0 and int(ip[3])<255:
-		k+=1
-	if k==4:
-		return True
-	else:
-		return False
+		if int(ip[1])>=0 and int(ip[1])<256:
+			k+=1
+			if int(ip[2])>=0 and int(ip[2])<256:
+				k+=1
+				if int(ip[3])>0 and int(ip[3])<255:
+					k+=1
+				if k==4:
+					return True
+				else:
+					return False
 
-	
 def criar_novo_arquivo():
+	"""
+		Funcao que cria uma nova lista com IPs validos
+	"""
 	nova_lista = open('nova_lista.txt','a')
 	arq = ler_arquivo('lista_ips.txt')
 	#print 'imprimindo ',arq.read()
@@ -36,5 +39,4 @@ def criar_novo_arquivo():
 
 print criar_novo_arquivo()
 #ler_lisnhas_do_arquivo()
-
 #print valida_ip('257.32.4.5')
